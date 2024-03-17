@@ -49,5 +49,5 @@ NS?=web-example
 kubernetes-deploy:
 	echo KUBECONFIG:${KUBECONFIG}
 	kubectl create ns ${NS} || echo ...done
-	kubectl -n ${NS} run --image quay.io/toschneck/webserver-example web-example --port 80 || echo ...done
+	kubectl -n ${NS} run --image quay.io/toschneck/webserver-example:${FINAL_TAG} web-example --port 80 || echo ...done
 	kubectl -n ${NS} expose pod web-example --type NodePort --target-port 80
